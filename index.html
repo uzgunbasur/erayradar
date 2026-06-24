@@ -2,30 +2,31 @@
 <html>
 <head>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
-        /* Haritayı tam ekran yapıyoruz, kırpmaya gerek kalmıyor */
-        #radar { width: 100%; height: 100%; border: none; }
-        
-        /* Sağ üstteki senin şık tasarımın */
-        .card {
-            position: absolute; top: 30px; right: 30px;
-            width: 350px; background: rgba(0, 0, 0, 0.9);
-            border: 2px solid #00d4ff; border-radius: 15px;
-            padding: 25px; color: white;
-            box-shadow: 0 0 20px #00d4ff; z-index: 10;
+        body { margin: 0; padding: 0; background: transparent; font-family: 'Segoe UI', sans-serif; color: white; }
+        .overlay-container {
+            width: 800px; background: rgba(10, 10, 15, 0.9);
+            border: 2px solid #00d4ff; border-radius: 20px;
+            padding: 25px; box-shadow: 0 0 20px #00d4ff;
         }
-        .header { font-size: 22px; font-weight: bold; color: #00d4ff; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .data { margin: 10px 0; font-size: 17px; }
+        .header { text-align: center; font-size: 26px; color: #00d4ff; margin-bottom: 20px; font-weight: bold; }
+        .track-line { 
+            display: flex; justify-content: space-between; align-items: center;
+            height: 4px; background: #333; margin: 30px 0; position: relative;
+        }
+        .plane-icon { font-size: 30px; position: absolute; left: 50%; transform: translateX(-50%); }
+        .info { font-size: 18px; margin-top: 15px; }
     </style>
 </head>
 <body>
-    <iframe id="radar" src="https://www.flightradar24.com/simple/35.00,-40.00/4" allow="autoplay"></iframe>
-
-    <div class="card">
-        <div class="header">✈️ UÇUŞ TAKİP</div>
-        <div class="data">📍 <b>Uçuş:</b> TK179 (IST - LAX)</div>
-        <div class="data">🌍 <b>Konum:</b> Canlı Haritada Görülüyor</div>
-        <div class="data">📡 <b>Durum:</b> Yayında</div>
+    <div class="overlay-container">
+        <div class="header">✈️ TK179 UÇUŞ TAKİP</div>
+        <div class="track-line">
+            <span>IST</span>
+            <span class="plane-icon">✈️</span>
+            <span>LAX</span>
+        </div>
+        <div class="info" id="status">📍 <b>Konum:</b> Okyanus Üstü</div>
+        <div class="info">📡 <b>Veri:</b> Canlı</div>
     </div>
 </body>
 </html>
